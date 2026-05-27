@@ -8,7 +8,12 @@ public abstract class Predator extends Animal {
     public void hunt() {
         // TODO: +30 к energyLevel (макс 100), weight -= 0.5.
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-
+        if (energyLevel + 30 >= 100){
+            energyLevel = 100;
+        } else {
+            energyLevel += 30;
+        }
+        weight -= 0.5;
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 }

@@ -21,6 +21,10 @@ public abstract class Vehicle {
     public void setFuelLevel(double fuelLevel) {
         // TODO: разрешите диапазон только 0.0..1.0, иначе IllegalArgumentException.
         // ▼ ВАШ КОД ЗДЕСЬ ▼
+        if (fuelLevel < 0.0 || fuelLevel > 1.0) {
+            throw new IllegalArgumentException(
+                    "Уровень топлива должен быть в диапазоне [0.0, 1.0], получено: " + fuelLevel);
+        }
         this.fuelLevel = fuelLevel;
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
@@ -36,13 +40,15 @@ public abstract class Vehicle {
         // TODO: используйте fuelLevel, емкость бака и расход.
         // Подсказка: доступное топливо = fuelLevel * tankCapacityLiters.
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-        return false;
+        double availableFuel = fuelLevel * tankCapacityLiters;
+        double fuelNeeded = calculateFuelNeeded(distanceKm);
+        return availableFuel >= fuelNeeded;
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 
     @Override
     public String toString() {
         return String.format("%s %s (%d), fuel=%.0f%%",
-            brand, model, year, fuelLevel * 100.0);
+                brand, model, year, fuelLevel * 100.0);
     }
 }

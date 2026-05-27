@@ -12,17 +12,25 @@ public class NumberClassifier {
     public static String classify(int number) {
         // TODO: верните категорию для number по условию задания.
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-        if (number < 0) return "< 0";
-        return "TODO";
+        if (number < 0) {
+            return "Отрицательное";
+        }  else if ((number > 0) && (number <= 9)) {
+            return "Однозначное";
+        } else if ((number > 9) && (number <= 99)) {
+            return "Двузначное";
+        } else if (number > 99) {
+            return "Большое";
+        }
+        return "Ноль";
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 
     public static void main(String[] args) {
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-        System.out.println("Group: ИМЯ_ВАШЕЙ_ГРУППЫ");
-        System.out.println("Sequence number: ВАШ_ПОРЯДКОВЫЙ_НОМЕР_В_ГРУППЕ");
+        System.out.println("Group: ПИ24-3В");
+        System.out.println("Sequence number: 4");
         System.out.println("Date: " + LocalDate.now());
-         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
+        // ▲ КОНЕЦ ВАШЕГО КОДА ▲
 
         int[] samples = {-5, 0, 7, 42, 100, 1000, -999};
         for (int n : samples) {

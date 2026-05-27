@@ -6,7 +6,14 @@ public class StringProcessor {
     public static int countVowels(String text) {
         // TODO: посчитайте русские и английские гласные.
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-        return -1;
+        int count = 0;
+        for (int i = 0; i < text.length(); i++) {
+            char c = Character.toLowerCase(text.charAt(i));
+            if (VOWELS.indexOf(c) != -1) {
+                count++;
+            }
+        }
+        return count;
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 
@@ -14,21 +21,50 @@ public class StringProcessor {
         // TODO: палиндром без учета регистра и знаков препинания.
         // Подсказка: сравнение символов с двух концов.
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-        return false;
+        String cleaned = text.replaceAll("[^a-zA-Zа-яА-ЯёЁ]", "").toLowerCase();
+        int left = 0;
+        int right = cleaned.length() - 1;
+        while (left < right) {
+            if (cleaned.charAt(left) != cleaned.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 
     public static String reverse(String text) {
         // TODO: реверс без StringBuilder.
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-        return "";
+        char[] chars = text.toCharArray();
+        int left = 0;
+        int right = chars.length - 1;
+        while (left < right) {
+            char temp = chars[left];
+            chars[left] = chars[right];
+            chars[right] = temp;
+            left++;
+            right--;
+        }
+        return new String(chars);
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 
     public static String findLongestWord(String sentence) {
         // TODO: найдите самое длинное слово.
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-        return "";
+        String[] words = sentence.split("\\s+"); // разбиваем по пробельным символам
+        String longest = "";
+        for (String word : words) {
+            // Удаляем знаки препинания по краям слова
+            String cleanWord = word.replaceAll("^[^a-zA-Zа-яА-ЯёЁ]+|[^a-zA-Zа-яА-ЯёЁ]+$", "");
+            if (cleanWord.length() > longest.length()) {
+                longest = cleanWord;
+            }
+        }
+        return longest;
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 

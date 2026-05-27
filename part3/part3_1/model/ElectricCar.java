@@ -7,8 +7,8 @@ public class ElectricCar extends Car implements Electric {
     private final double maxRangeKm;
 
     public ElectricCar(
-        String brand, String model, int year, double fuelLevel, int doors, boolean automatic,
-        double batteryLevel, double maxRangeKm
+            String brand, String model, int year, double fuelLevel, int doors, boolean automatic,
+            double batteryLevel, double maxRangeKm
     ) {
         super(brand, model, year, fuelLevel, doors, automatic);
         this.batteryLevel = batteryLevel;
@@ -24,7 +24,7 @@ public class ElectricCar extends Car implements Electric {
     public double getRangeKm() {
         // TODO: запас хода = maxRangeKm * batteryLevel.
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-        return 0.0;
+        return maxRangeKm * batteryLevel;
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 
@@ -32,7 +32,7 @@ public class ElectricCar extends Car implements Electric {
     public void charge(double hours) {
         // TODO: +20% в час, максимум 100%.
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-
+        batteryLevel = Math.min(batteryLevel + 0.2 * hours, 1.0);
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 

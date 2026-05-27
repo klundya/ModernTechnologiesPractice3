@@ -19,7 +19,7 @@ public class VehicleDemo {
         double distance = 500.0;
         for (Vehicle v : fleet) {
             System.out.printf("%s | %s | fuel for %.0f km: %.2f%n",
-                v.getType(), v, distance, v.calculateFuelNeeded(distance));
+                    v.getType(), v, distance, v.calculateFuelNeeded(distance));
             if (v instanceof Car car) {
                 car.honk();
             }

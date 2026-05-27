@@ -16,14 +16,22 @@ public abstract class Animal {
     public void eat(int calories) {
         // TODO: увеличьте energyLevel, но не выше 100.
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-
+        if (energyLevel + (int) (calories*0.3) >= 100){
+            energyLevel = 100;
+        } else {
+            energyLevel += (int) (calories*0.3);
+        }
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 
     public void sleep(int hours) {
         // TODO: увеличьте energyLevel в зависимости от часов, но не выше 100.
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-
+        if (energyLevel + hours*10 >= 100){
+            energyLevel = 100;
+        } else {
+            energyLevel += hours*10;
+        }
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 
